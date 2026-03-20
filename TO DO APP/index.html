@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taskit</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Navigation (Simplified as per screenshot implied menu) -->
+        <!-- For this single page view, we focus on the main content area -->
+        
+        <header class="app-header">
+            <div class="logo-area">
+                <button class="menu-btn"><i class="fa-solid fa-bars"></i></button>
+                <div class="logo">
+                    <span class="logo-icon"><i class="fa-solid fa-square-check"></i></span>
+                    <span class="logo-text">Taskit</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="icon-btn search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="icon-btn notif-btn"><i class="fa-regular fa-bell"></i></button>
+                <div class="user-profile">
+                    <div class="avatar">JD</div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="greeting-area">
+                <h1>All Tasks</h1>
+                <p class="subtitle">Manage all your tasks in one place</p>
+            </div>
+
+            <!-- Dashboard Cards -->
+            <div class="dashboard-grid">
+                <div class="card stat-card total">
+                    <div class="card-header">
+                        <span class="card-title">Total Tasks</span>
+                        <div class="card-icon icon-bg-1"><i class="fa-solid fa-list-ul"></i></div>
+                    </div>
+                    <div class="card-body">
+                        <h2 id="total-count">0</h2>
+                        <p>All tasks</p>
+                    </div>
+                </div>
+
+                <div class="card stat-card pending">
+                    <div class="card-header">
+                        <span class="card-title">Pending</span>
+                        <div class="card-icon icon-bg-2"><i class="fa-regular fa-clock"></i></div>
+                    </div>
+                    <div class="card-body">
+                        <h2 id="pending-count">0</h2>
+                        <p>Tasks to do</p>
+                    </div>
+                </div>
+
+                <div class="card stat-card important">
+                    <div class="card-header">
+                        <span class="card-title">Important</span>
+                        <div class="card-icon icon-bg-3"><i class="fa-regular fa-star"></i></div>
+                    </div>
+                    <div class="card-body">
+                        <h2 id="important-count">0</h2>
+                        <p>Priority tasks</p>
+                    </div>
+                </div>
+
+                <div class="card stat-card completed">
+                    <div class="card-header">
+                        <span class="card-title">Completed</span>
+                        <div class="card-icon icon-bg-4"><i class="fa-regular fa-circle-check"></i></div>
+                    </div>
+                    <div class="card-body">
+                        <h2 id="completed-count">0</h2>
+                        <p>Done tasks</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-section">
+                <div class="input-wrapper">
+                    <input type="text" id="task-input" placeholder="Add a new task...">
+                </div>
+                <button id="add-btn" class="add-btn">
+                    <i class="fa-solid fa-plus"></i> Add Task
+                </button>
+            </div>
+
+            <!-- Task List -->
+            <div class="task-list-container" id="task-list">
+                <!-- Tasks will be injected here via JS -->
+            </div>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

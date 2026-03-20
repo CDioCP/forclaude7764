@@ -1,0 +1,457 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&display=swap');
+
+:root {
+  --cyan: #00f7ff;
+  --pink: #ff00ff;
+  --bg: #000000;
+}
+
+/* --- CENTRADO TOTAL --- */
+body,
+#root {
+  margin: 0;
+  background: var(--bg);
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+  display: flex;
+  justify-content: center;
+  /* Centro horizontal */
+  width: 100%;
+}
+
+.layout-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Centro vertical de los elementos */
+  width: 100%;
+  max-width: 1400px;
+}
+
+.cyber-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 80px 20px;
+}
+
+/* --- CABECERA GIGANTE --- */
+.galaxy-logo {
+  font-size: 8rem;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 30px var(--cyan));
+}
+
+.main-title {
+  font-size: clamp(4.5rem, 15vw, 8.5rem);
+  color: var(--cyan);
+  text-shadow: 0 0 40px var(--cyan);
+  margin: 0;
+  letter-spacing: 12px;
+}
+
+.tagline {
+  font-size: 1.8rem;
+  color: var(--pink);
+  letter-spacing: 10px;
+  margin-top: 15px;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px var(--pink);
+}
+
+/* --- CAJA DE BUSQUEDA MASIVA --- */
+.search-box {
+  width: 100%;
+  max-width: 800px;
+  /* Ancho controlado y centrado */
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 60px;
+  align-items: center;
+}
+
+input {
+  width: 100%;
+  padding: 35px;
+  font-size: 1.8rem;
+  /* Letra de input muy grande */
+  background: rgba(0, 0, 0, 0.9);
+  border: 4px solid var(--cyan);
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.cyber-btn {
+  width: 100%;
+  padding: 35px;
+  font-size: 2.2rem;
+  /* Botón gigante */
+  background: transparent;
+  color: var(--pink);
+  border: 5px solid var(--pink);
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 0 30px var(--pink);
+  margin-top: 20px;
+}
+
+.cyber-btn:hover:not(:disabled) {
+  background: var(--pink);
+  color: black;
+  box-shadow: 0 0 80px var(--pink);
+  transform: scale(1.02);
+}
+
+/* --- BARRA DE PROGRESO --- */
+.progress-container {
+  width: 100%;
+  margin: 40px 0;
+}
+
+.progress-bar-outline {
+  height: 40px;
+  border: 2px solid var(--cyan);
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--cyan), var(--pink));
+  transition: width 0.3s;
+}
+
+.progress-text {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  color: var(--cyan);
+  font-size: 1.3rem;
+  font-weight: 900;
+}
+
+/* --- GRID DE 10 PELÍCULAS --- */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 100%;
+  margin-top: 80px;
+}
+
+@media (min-width: 768px) {
+  .results-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+}
+
+.movie-card {
+  border: 2px solid var(--cyan);
+  background: #0a0a15;
+}
+
+.poster-wrapper {
+  position: relative;
+  height: 260px;
+}
+
+@media (min-width: 768px) {
+  .poster-wrapper {
+    height: 400px;
+  }
+}
+
+.poster-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.match-tag {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: var(--pink);
+  color: black;
+  padding: 6px 15px;
+  font-weight: 900;
+}
+
+.movie-details {
+  padding: 25px;
+}
+
+.movie-details h3 {
+  font-size: 1.6rem;
+  color: var(--cyan);
+  margin-bottom: 10px;
+}
+
+.movie-desc {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+/* --- FOOTER --- */
+.cyber-footer {
+  width: 100%;
+  padding: 80px 0;
+  border-top: 4px solid var(--cyan);
+  text-align: center;
+  margin-top: 120px;
+}
+
+.legal-links {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 20px;
+}
+
+.legal-links a {
+  color: var(--cyan);
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 900;
+}
+
+/* --- DYNAMIC INPUT ROW --- */
+.input-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+}
+
+.input-row input {
+  flex: 1;
+}
+
+.remove-btn {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  background: transparent;
+  border: 3px solid var(--pink);
+  color: var(--pink);
+  font-size: 1.4rem;
+  font-family: 'Orbitron', sans-serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.remove-btn:hover {
+  background: var(--pink);
+  color: black;
+}
+
+.add-btn {
+  width: 100%;
+  padding: 18px;
+  font-size: 1.2rem;
+  background: transparent;
+  color: var(--cyan);
+  border: 2px dashed var(--cyan);
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  cursor: pointer;
+  letter-spacing: 4px;
+}
+
+.add-btn:hover {
+  background: rgba(0, 247, 255, 0.1);
+}
+
+/* --- MOVIE CARD (components/MovieCard.jsx) --- */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 15px;
+}
+
+.score-badge {
+  background: var(--pink);
+  color: black;
+  padding: 6px 15px;
+  font-weight: 900;
+  font-size: 0.9rem;
+}
+
+.content {
+  padding: 20px 25px;
+}
+
+.content h3 {
+  font-size: 1.4rem;
+  color: var(--cyan);
+  margin: 0 0 6px 0;
+}
+
+.content p {
+  font-size: 1rem;
+  color: #aaa;
+  margin: 0 0 10px 0;
+}
+
+.media-type {
+  font-size: 0.75rem;
+  color: var(--cyan);
+  border: 1px solid var(--cyan);
+  padding: 2px 8px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.provider-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.provider-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.provider-fallback {
+  font-size: 0.75rem;
+  color: #555;
+  letter-spacing: 1px;
+}
+
+/* --- MOVIE OVERVIEW (ESL vocabulary exposure) --- */
+.movie-overview {
+  font-size: 0.72rem;
+  color: #888;
+  line-height: 1.55;
+  margin: 10px 0 0 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* --- LANGUAGE BADGE --- */
+.lang-badge {
+  font-size: 0.65rem;
+  color: #00f7ff;
+  border: 1px solid rgba(0,247,255,0.4);
+  padding: 1px 6px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.lang-badge.non-english {
+  color: #aaa;
+  border-color: rgba(255,255,255,0.2);
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 640px) {
+  .galaxy-logo { font-size: 3.5rem; }
+
+  .tagline {
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+  }
+
+  .cyber-page { padding: 32px 14px; }
+
+  .search-box {
+    gap: 14px;
+    margin-top: 32px;
+  }
+
+  input {
+    padding: 16px 14px;
+    font-size: 1rem;
+  }
+
+  .cyber-btn {
+    padding: 18px;
+    font-size: 1.2rem;
+    margin-top: 8px;
+  }
+
+  .remove-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+  }
+
+  .results-grid {
+    gap: 12px;
+    margin-top: 36px;
+  }
+
+  .content {
+    padding: 12px 14px;
+  }
+
+  .content h3 {
+    font-size: 0.85rem;
+    margin: 0 0 4px 0;
+  }
+
+  .content p {
+    font-size: 0.75rem;
+    margin: 0 0 6px 0;
+  }
+
+  .media-type {
+    font-size: 0.6rem;
+    padding: 1px 5px;
+  }
+
+  .provider-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .provider-row {
+    margin-top: 8px;
+    gap: 5px;
+  }
+
+  .movie-overview {
+    -webkit-line-clamp: 2;
+    font-size: 0.68rem;
+  }
+
+  .cyber-footer {
+    padding: 40px 0;
+    margin-top: 60px;
+  }
+
+  .legal-links {
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 0 16px;
+  }
+
+  .legal-links a {
+    font-size: 0.9rem;
+  }
+}
