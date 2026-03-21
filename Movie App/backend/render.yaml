@@ -8,4 +8,4 @@ services:
       - key: TMDB_API_KEY
         sync: false
       - key: ALLOWED_ORIGINS
-        sync: false
+        value: https://cinehelix.web.app
