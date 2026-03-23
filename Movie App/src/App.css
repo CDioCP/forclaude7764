@@ -340,16 +340,30 @@ input {
   letter-spacing: 1px;
 }
 
-/* --- MOVIE OVERVIEW (ESL vocabulary exposure) --- */
+/* --- MOVIE OVERVIEW --- */
 .movie-overview {
   font-size: 0.72rem;
   color: #888;
   line-height: 1.55;
   margin: 10px 0 0 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  max-height: 140px;
+  overflow-y: auto;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--cyan) #111;
+}
+
+.movie-overview::-webkit-scrollbar {
+  width: 4px;
+}
+
+.movie-overview::-webkit-scrollbar-track {
+  background: #111;
+}
+
+.movie-overview::-webkit-scrollbar-thumb {
+  background: var(--cyan);
+  border-radius: 2px;
 }
 
 /* --- LANGUAGE BADGE --- */
@@ -513,6 +527,53 @@ input {
   font-style: italic;
 }
 
+/* --- DECADE SELECTOR --- */
+.decade-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.decade-label {
+  font-size: 0.9rem;
+  color: var(--cyan);
+  letter-spacing: 3px;
+  font-weight: 900;
+}
+
+.decade-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  width: 100%;
+}
+
+.decade-btn {
+  padding: 10px 6px;
+  font-size: 0.65rem;
+  background: transparent;
+  color: #555;
+  border: 1px solid #333;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  cursor: pointer;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.decade-btn:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.decade-btn.active {
+  background: var(--cyan);
+  color: black;
+  border-color: var(--cyan);
+  box-shadow: 0 0 10px var(--cyan);
+}
+
 /* --- MOBILE RESPONSIVE --- */
 @media (max-width: 640px) {
   .galaxy-logo { font-size: 3.5rem; }
@@ -581,8 +642,8 @@ input {
   }
 
   .movie-overview {
-    -webkit-line-clamp: 2;
     font-size: 0.68rem;
+    max-height: 110px;
   }
 
   .cyber-footer {

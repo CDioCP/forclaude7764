@@ -147,11 +147,12 @@ def get_watch_providers(tmdb_id, media_type):
         
     return []
 
-def  get_recommendations_from_seeds(seeds, count=10, min_score=0, exclude_ids=None):
+def  get_recommendations_from_seeds(seeds, count=10, min_score=0, exclude_ids=None, decade_start=0):
     """
     seeds: List of strings (titles)
     count: int
     min_score: float (0-10 mapped from inputs)
+    decade_start: int year (0 = no filter)
     Returns: (results, mode)
     """
     excluded = set(exclude_ids or [])
@@ -191,6 +192,11 @@ def  get_recommendations_from_seeds(seeds, count=10, min_score=0, exclude_ids=No
 
     if not seed_ids:
         return [], "Unknown"
+
+    # Detect dominant media type from seeds (movies vs TV series)
+    movie_seeds = sum(1 for _, mt in seed_ids if mt == 'movie')
+    tv_seeds = sum(1 for _, mt in seed_ids if mt == 'tv')
+    dominant_type = 'tv' if tv_seeds > movie_seeds else 'movie'
 
     # Determine Mode (Budget Sniffer)
     avg_budget = (total_budget / budget_count) if budget_count > 0 else 0
@@ -275,6 +281,17 @@ def  get_recommendations_from_seeds(seeds, count=10, min_score=0, exclude_ids=No
         if item["id"] in [s[0] for s in seed_ids]: continue
         if item["id"] in excluded: continue
         if item["id"] in seen: continue
+
+        # Filter by dominant media type (movies→movies, series→series)
+        item_type = c.get("media_type") or item.get("media_type") or "movie"
+        if item_type != dominant_type: continue
+
+        # Filter by decade
+        if decade_start > 0:
+            date_str = item.get("release_date") or item.get("first_air_date") or ""
+            item_year = int(date_str[:4]) if date_str and len(date_str) >= 4 else 0
+            if item_year < decade_start: continue
+
         seen.add(item["id"])
 
         # Use tracked media_type (fixes TV recommendations defaulting to "movie")

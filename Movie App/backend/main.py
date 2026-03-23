@@ -22,6 +22,7 @@ class MovieRequest(BaseModel):
     count: int = 10
     min_score: float = 0
     exclude_ids: list[int] = []
+    decade_start: int = 0
 
 @app.post("/generate-dna")
 def generate_dna(request: MovieRequest):
@@ -31,6 +32,7 @@ def generate_dna(request: MovieRequest):
         seeds,
         count=count,
         min_score=request.min_score,
-        exclude_ids=request.exclude_ids
+        exclude_ids=request.exclude_ids,
+        decade_start=request.decade_start,
     )
     return {"results": results, "mode": mode}

@@ -6,6 +6,19 @@ import './App.css';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
 
+const DECADES = [
+  { label: '1950s+', value: 1950 },
+  { label: '1960s+', value: 1960 },
+  { label: '1970s+', value: 1970 },
+  { label: '1980s+', value: 1980 },
+  { label: '1990s+', value: 1990 },
+  { label: '2000s+', value: 2000 },
+  { label: '2010s+', value: 2010 },
+  { label: '2020s+', value: 2020 },
+  { label: 'CURRENT', value: 2023 },
+  { label: 'ANY ERA', value: 0 },
+];
+
 const MovieApp = () => {
   const [movies, setMovies] = useState([]);
   const [favorites, setFavorites] = useState(['', '', '']);
@@ -13,6 +26,7 @@ const MovieApp = () => {
   const [progress, setProgress] = useState(0);
   const [count, setCount] = useState(10);
   const [minScore, setMinScore] = useState(0);
+  const [decade, setDecade] = useState(0);
   const [selected, setSelected] = useState([]);
   const [excluded, setExcluded] = useState([]);
   const [lastSeeds, setLastSeeds] = useState([]);
@@ -50,6 +64,7 @@ const MovieApp = () => {
           count: requestCount,
           min_score: minScore,
           exclude_ids: excludeIds,
+          decade_start: decade,
         }),
       });
       const data = await response.json();
@@ -140,6 +155,21 @@ const MovieApp = () => {
               value={minScore}
               onChange={e => setMinScore(Number(e.target.value))}
             />
+          </div>
+        </div>
+
+        <div className="decade-section">
+          <label className="decade-label">ERA FILTER</label>
+          <div className="decade-grid">
+            {DECADES.map(d => (
+              <button
+                key={d.value}
+                className={`decade-btn${decade === d.value ? ' active' : ''}`}
+                onClick={() => setDecade(d.value)}
+              >
+                {d.label}
+              </button>
+            ))}
           </div>
         </div>
 
