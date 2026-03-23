@@ -46,8 +46,13 @@ const MovieCard = ({ movie, number, selected, onToggle }) => {
                 {movie.overview && (
                     <>
                         <button className="synopsis-btn" onClick={() => setShowSynopsis(s => !s)}>
-                            {showSynopsis ? '▲ HIDE SYNOPSIS' : '▼ SYNOPSIS'}
+                            {showSynopsis ? '▲ HIDE SYNOPSIS' : '▼ TAP FOR SYNOPSIS'}
                         </button>
+                        {!showSynopsis && (
+                            <p className="synopsis-hint">
+                                Synopsis hidden — tap above to read. Skip if you prefer to discover fresh.
+                            </p>
+                        )}
                         {showSynopsis && <p className="movie-overview">{movie.overview}</p>}
                     </>
                 )}

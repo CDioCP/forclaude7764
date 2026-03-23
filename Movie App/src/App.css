@@ -505,6 +505,14 @@ input {
   border-color: var(--cyan);
 }
 
+.synopsis-hint {
+  font-size: 0.6rem;
+  color: #555;
+  letter-spacing: 1px;
+  margin: 4px 0 0 0;
+  font-style: italic;
+}
+
 /* --- MOBILE RESPONSIVE --- */
 @media (max-width: 640px) {
   .galaxy-logo { font-size: 3.5rem; }
