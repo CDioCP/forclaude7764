@@ -19,9 +19,18 @@ app.add_middleware(
 
 class MovieRequest(BaseModel):
     favorite_movies: list[str]
+    count: int = 10
+    min_score: float = 0
+    exclude_ids: list[int] = []
 
 @app.post("/generate-dna")
 def generate_dna(request: MovieRequest):
     seeds = [m.strip() for m in request.favorite_movies if m.strip()]
-    results, mode = get_recommendations_from_seeds(seeds, count=10)
+    count = max(1, min(20, request.count))
+    results, mode = get_recommendations_from_seeds(
+        seeds,
+        count=count,
+        min_score=request.min_score,
+        exclude_ids=request.exclude_ids
+    )
     return {"results": results, "mode": mode}

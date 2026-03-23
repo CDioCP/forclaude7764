@@ -147,13 +147,14 @@ def get_watch_providers(tmdb_id, media_type):
         
     return []
 
-def  get_recommendations_from_seeds(seeds, count=10, min_score=0):
+def  get_recommendations_from_seeds(seeds, count=10, min_score=0, exclude_ids=None):
     """
     seeds: List of strings (titles)
     count: int
     min_score: float (0-10 mapped from inputs)
     Returns: (results, mode)
     """
+    excluded = set(exclude_ids or [])
     seed_ids = []
     seed_genres = set()
     seed_keywords = set()
@@ -272,6 +273,7 @@ def  get_recommendations_from_seeds(seeds, count=10, min_score=0):
         item = c["data"]
         # Avoid showing seeds in results
         if item["id"] in [s[0] for s in seed_ids]: continue
+        if item["id"] in excluded: continue
         if item["id"] in seen: continue
         seen.add(item["id"])
 

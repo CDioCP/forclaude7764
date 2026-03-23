@@ -1,5 +1,8 @@
+import { useState } from 'react';
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, number, selected, onToggle }) => {
+    const [showSynopsis, setShowSynopsis] = useState(false);
+
     const imageUrl = movie.poster_path
         ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
         : 'https://placehold.co/500x750/05050a/00f7ff?text=NO+IMAGE';
@@ -7,7 +10,17 @@ const MovieCard = ({ movie }) => {
     const isEnglish = movie.original_language === 'en';
 
     return (
-        <div className="movie-card">
+        <div className={`movie-card${selected ? ' card-selected' : ''}`}>
+            <div className="card-header">
+                <span className="movie-number">#{number}</span>
+                <input
+                    type="checkbox"
+                    checked={selected}
+                    onChange={onToggle}
+                    className="movie-checkbox"
+                    title="Select for replacement"
+                />
+            </div>
             <div className="poster-wrapper">
                 <img src={imageUrl} alt={movie.title || movie.name} loading="lazy" />
                 <div className="overlay">
@@ -31,10 +44,14 @@ const MovieCard = ({ movie }) => {
                 </div>
 
                 {movie.overview && (
-                    <p className="movie-overview">{movie.overview}</p>
+                    <>
+                        <button className="synopsis-btn" onClick={() => setShowSynopsis(s => !s)}>
+                            {showSynopsis ? '▲ HIDE SYNOPSIS' : '▼ SYNOPSIS'}
+                        </button>
+                        {showSynopsis && <p className="movie-overview">{movie.overview}</p>}
+                    </>
                 )}
 
-                {/* Streaming Providers */}
                 <div className="provider-row">
                     {movie.providers && movie.providers.length > 0 ? (
                         movie.providers.slice(0, 4).map((provider, index) => (

@@ -368,6 +368,143 @@ input {
   border-color: rgba(255,255,255,0.2);
 }
 
+/* --- FILTER SLIDERS --- */
+.filter-row {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filter-group label {
+  font-size: 0.9rem;
+  color: var(--cyan);
+  letter-spacing: 3px;
+  font-weight: 900;
+}
+
+.filter-group input[type="range"] {
+  width: 100%;
+  padding: 0;
+  height: 6px;
+  border: none;
+  background: transparent;
+  accent-color: var(--cyan);
+  cursor: pointer;
+}
+
+/* --- RESULTS CONTROLS (select all / replace) --- */
+.results-controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  margin-top: 60px;
+  flex-wrap: wrap;
+}
+
+.select-all-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--cyan);
+  letter-spacing: 3px;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.select-all-label input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--cyan);
+  cursor: pointer;
+  padding: 0;
+  border: 2px solid var(--cyan);
+  flex-shrink: 0;
+}
+
+.replace-btn {
+  padding: 12px 24px;
+  font-size: 0.85rem;
+  background: transparent;
+  color: var(--pink);
+  border: 2px solid var(--pink);
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  cursor: pointer;
+  letter-spacing: 2px;
+  box-shadow: 0 0 15px var(--pink);
+}
+
+.replace-btn:hover:not(:disabled) {
+  background: var(--pink);
+  color: black;
+}
+
+/* --- CARD HEADER (number + checkbox) --- */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px 6px;
+  background: #05050f;
+  border-bottom: 1px solid rgba(0,247,255,0.15);
+}
+
+.movie-number {
+  font-size: 1rem;
+  color: var(--pink);
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.movie-checkbox {
+  width: 20px !important;
+  height: 20px !important;
+  accent-color: var(--pink);
+  cursor: pointer;
+  padding: 0 !important;
+  border: none !important;
+  text-align: left !important;
+  flex-shrink: 0;
+}
+
+.card-selected {
+  border-color: var(--pink) !important;
+  box-shadow: 0 0 20px rgba(255,0,255,0.4);
+}
+
+/* --- SYNOPSIS BUTTON --- */
+.synopsis-btn {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 6px 10px;
+  background: transparent;
+  color: var(--cyan);
+  border: 1px solid rgba(0,247,255,0.3);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.synopsis-btn:hover {
+  background: rgba(0,247,255,0.08);
+  border-color: var(--cyan);
+}
+
 /* --- MOBILE RESPONSIVE --- */
 @media (max-width: 640px) {
   .galaxy-logo { font-size: 3.5rem; }
