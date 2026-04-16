@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aastorage.web.app/sitemap-index.xml

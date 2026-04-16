@@ -1,0 +1,1942 @@
+---
+import '../styles/global.css';
+
+const units = [
+  { type: 'A', dims: '1.5 × 1.5 m', area: '2.25 m²', regularPrice: 56.25, price: 50,  labelEn: 'Starter',      labelEs: 'Básica',    descEn: 'Boxes, clothes, small personal items',         descEs: 'Cajas, ropa, artículos personales pequeños' },
+  { type: 'B', dims: '2 × 2 m',     area: '4 m²',     regularPrice: 100,   price: 80,  labelEn: 'Home',         labelEs: 'Hogar',     descEn: 'Furniture, appliances, seasonal gear',         descEs: 'Muebles, electrodomésticos, artículos de temporada' },
+  { type: 'C', dims: '4 × 2.25 m',  area: '10 m²',    regularPrice: 250,   price: 200, labelEn: 'Business',     labelEs: 'Negocio',   descEn: 'Inventory, equipment, office overflow',        descEs: 'Inventario, equipo, desbordamiento de oficina', popular: true },
+  { type: 'D', dims: '4 × 4.5 m',   area: '18 m²',    regularPrice: 216,   price: 180, labelEn: 'Large Room',   labelEs: 'Cuarto Grande', descEn: 'Full home contents, vehicle parts',       descEs: 'Casa completa, repuestos, negocio grande' },
+  { type: 'E', dims: '6 × 6 m',     area: '36 m²',    regularPrice: 432,   price: 360, labelEn: 'Warehouse',    labelEs: 'Bodega Grande', descEn: 'Warehouse-size. Serious storage needs.',  descEs: 'Tamaño bodega. Para necesidades serias.' },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en" class="lang-en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/images/logo.png" />
+
+  <title>AA Self Storage MiniBodegas | Self Storage Costa Rica · From $50/mo</title>
+  <meta name="description" content="Secure self storage in La Uruca, San José, Costa Rica. Expat-friendly, English-speaking staff. Units from $50/month USD. CCTV. No contract. Mini bodegas." />
+
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="en"        href="https://aastorage.web.app/" />
+  <link rel="alternate" hreflang="es-CR"     href="https://aastorage.web.app/" />
+  <link rel="alternate" hreflang="x-default" href="https://aastorage.web.app/" />
+
+  <!-- OG -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://aastorage.web.app/" />
+  <meta property="og:title"       content="AA Self Storage MiniBodegas | Self Storage Costa Rica" />
+  <meta property="og:description" content="Storage units from $50/month USD. CCTV. Month-to-month. English-speaking staff. La Uruca, San José, Costa Rica." />
+  <meta property="og:image"       content="https://aastorage.web.app/images/hero-couple.png" />
+  <meta property="og:locale"      content="en_US" />
+
+  <!-- Fonts: Playfair Display + Nunito (no Inter/Roboto/Arial) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- GA4 + Google Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VQ8C4HXF33"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VQ8C4HXF33');
+    gtag('config', 'AW-976283148');
+  </script>
+
+  <!-- Facebook Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
+      s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
+    }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','873584158281297');fbq('track','PageView');
+  </script>
+
+  <!-- Schema: SelfStorage + LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["SelfStorage", "LocalBusiness"],
+    "name": "AA Self Storage MiniBodegas",
+    "url": "https://aastorage.cr",
+    "telephone": "+506-4000-0854",
+    "priceRange": "$50-$360",
+    "currenciesAccepted": "USD",
+    "openingHours": "Mo-Fr 08:00-17:00",
+    "description": "Secure self storage units in La Uruca, San José. CCTV. Month-to-month. English-speaking staff.",
+    "hasMap": "https://maps.google.com/?q=AA+Self+Storage+La+Uruca+San+Jose",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "La Uruca, junto a Migración y Extranjería",
+      "addressLocality": "San José",
+      "addressCountry": "CR"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --green:     #1B4D3E;
+      --green-dk:  #0f2d23;
+      --green-lg:  #2a6b56;
+      --gold:      #C9A84C;
+      --gold-lt:   #e2c47a;
+      --offwhite:  #F9F7F4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--offwhite);
+      color: var(--green);
+      margin: 0;
+    }
+
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+    /* ── Language toggle ───────────────────────────── */
+    html.lang-en .es-text { display: none !important; }
+    html.lang-es .en-text { display: none !important; }
+
+    /* ── Nav ───────────────────────────────────────── */
+    .nav-wrap {
+      background: var(--green);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-logo-icon {
+      width: 38px;
+      height: 38px;
+      background: var(--gold);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      color: var(--offwhite);
+      font-size: 1rem;
+      line-height: 1.15;
+    }
+    .nav-logo-sub {
+      font-size: 0.6rem;
+      font-weight: 600;
+      font-family: 'Nunito', sans-serif;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .nav-phone {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      flex: 1;
+      justify-content: center;
+    }
+    .nav-link {
+      color: rgba(249,247,244,0.8);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.02em;
+      transition: color 0.15s;
+    }
+    .nav-link:hover { color: var(--gold); }
+    @media (max-width: 639px) { .nav-links { display: none; } }
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 3px;
+      gap: 2px;
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 9px;
+      border-radius: 16px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      color: rgba(249,247,244,0.8);
+      transition: background 0.15s, color 0.15s;
+    }
+    .lang-btn.active {
+      background: rgba(201,168,76,0.35);
+      color: var(--offwhite);
+    }
+
+    /* ── Hero (photo bg + lead card) ───────────────── */
+    .hero {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-height: clamp(420px, 64vh, 660px);
+      overflow: hidden;
+      background: var(--green-dk);
+    }
+    .hero-photo {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: rgba(27, 77, 62, 0.35);
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      max-width: 1100px; margin: 0 auto;
+      padding: 3.5rem 1.5rem;
+      width: 100%;
+    }
+    .hero-card {
+      max-width: 520px;
+      background: rgba(10, 32, 24, 0.55);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      border-radius: 18px;
+      padding: 2.5rem 2.25rem 2.25rem;
+    }
+    .hero-card h1 {
+      color: var(--offwhite);
+      font-size: clamp(1.8rem, 4.2vw, 3rem);
+      font-weight: 900;
+      margin: 0 0 0.55rem;
+      line-height: 1.1;
+    }
+    .hero-finally {
+      display: block;
+      font-style: italic;
+      color: var(--gold);
+      font-size: 1.15em;
+      margin-bottom: 0.05em;
+      letter-spacing: -0.01em;
+    }
+    .hero-sub {
+      color: rgba(249, 247, 244, 0.82);
+      font-size: clamp(0.88rem, 1.8vw, 1rem);
+      margin: 0 0 1.8rem;
+      line-height: 1.65;
+    }
+    .hero-cta-row {
+      display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;
+    }
+    .hero-btn-wa {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.85rem 1.6rem;
+      background: #25D366; color: white;
+      border-radius: 10px; text-decoration: none;
+      font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.9rem;
+      box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35);
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .hero-btn-wa:hover { opacity: 0.88; transform: translateY(-2px); }
+    .hero-btn-guide {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.85rem 1.6rem;
+      background: var(--gold); color: var(--green);
+      border: none; border-radius: 10px; cursor: pointer;
+      font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.9rem;
+      box-shadow: 0 4px 18px rgba(201, 168, 76, 0.35);
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .hero-btn-guide:hover { opacity: 0.88; transform: translateY(-2px); }
+
+    /* Mobile: carousel behind card */
+    @media (max-width: 767px) {
+      .hero {
+        min-height: clamp(480px, 85vh, 680px);
+        overflow: hidden;
+        align-items: flex-end;
+      }
+      .hero-photo {
+        position: absolute; inset: 0;
+        width: 100%; height: 100%;
+        object-fit: cover; object-position: center 20%;
+      }
+      .hero-overlay { display: block; background: rgba(10,32,24,0.45); }
+      .hero-inner {
+        position: relative; z-index: 2;
+        padding: 1.5rem 1rem 2rem;
+      }
+      .hero-card {
+        max-width: 100%;
+        background: rgba(10, 32, 24, 0.72);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        padding: 1.75rem 1.25rem 2rem;
+      }
+      .hero-card h1 { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+    }
+    @media (max-width: 480px) {
+      .hero-cta-row { flex-direction: column; align-items: stretch; }
+      .hero-btn-wa, .hero-btn-guide { justify-content: center; }
+    }
+
+    /* ── Photo Carousel ─────────────────────────────── */
+    .photo-carousel {
+      position: relative;
+      height: clamp(300px, 52vh, 580px);
+      overflow: hidden;
+      background: var(--green-dk);
+    }
+    .pc-slide {
+      position: absolute; inset: 0;
+      opacity: 0; pointer-events: none;
+    }
+    .pc-slide.active { opacity: 1; pointer-events: auto; }
+    .pc-bg {
+      position: absolute; inset: 0;
+      background-size: cover;
+      background-position: center;
+      will-change: transform;
+    }
+    @keyframes kenburns {
+      from { transform: scale(1) translate(0, 0); }
+      to   { transform: scale(1.08) translate(-1%, -0.5%); }
+    }
+    @keyframes kenburnsBig {
+      from { transform: scale(1.08) translate(0, 0); }
+      to   { transform: scale(1.17) translate(-1%, -0.5%); }
+    }
+    .pc-bg.kb { animation: kenburns 5s ease-in-out forwards; }
+
+    /* Low-res slides: blur + bigger scale so edges never show */
+    .pc-slide[data-blur] .pc-bg {
+      filter: blur(2px);
+      transform: scale(1.08);
+    }
+    .pc-slide[data-blur] .pc-bg.kb { animation-name: kenburnsBig; }
+    .pc-slide[data-blur] .pc-overlay { background: rgba(27, 77, 62, 0.55); }
+
+    /* Solid design slide */
+    .pc-solid { background: var(--green-dk); }
+    .pc-solid-headline {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      color: var(--gold);
+      text-shadow: none;
+      letter-spacing: -0.02em;
+    }
+    .pc-solid-headline::after {
+      content: '';
+      display: block;
+      width: 3rem; height: 3px;
+      background: var(--gold);
+      margin: 0.6rem auto 0;
+      border-radius: 2px;
+    }
+
+    /* Tagline slide — centered image, no stretch */
+    .pc-tagline { background: var(--green-dk); }
+    .pc-tagline-img {
+      max-width: 800px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      object-fit: contain;
+    }
+    @media (max-width: 640px) {
+      .pc-tagline-img { max-width: 95vw; }
+    }
+
+    .pc-overlay {
+      position: absolute; inset: 0;
+      background: rgba(15,45,35,0.45);
+    }
+    .pc-slide.no-overlay .pc-overlay { display: none; }
+    .pc-text {
+      position: absolute; inset: 0; z-index: 2;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 1.5rem 2rem;
+    }
+    .pc-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3.5vw, 2.4rem);
+      font-weight: 900; color: var(--offwhite);
+      text-shadow: 0 2px 14px rgba(0,0,0,0.55);
+      margin: 0 0 0.5rem; line-height: 1.2;
+      max-width: 700px;
+    }
+    .pc-sub {
+      color: rgba(249,247,244,0.82);
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      margin: 0 0 1.5rem;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.45);
+      max-width: 560px;
+    }
+    .pc-cta {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.75rem 1.6rem;
+      background: #25D366; color: white;
+      border: none; border-radius: 10px;
+      font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.92rem;
+      cursor: pointer; text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+      transition: transform 0.15s;
+    }
+    .pc-cta:hover { transform: translateY(-2px); }
+    /* Arrows */
+    .pc-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50%; width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: white; z-index: 10;
+      transition: background 0.2s;
+    }
+    .pc-arrow:hover { background: rgba(255,255,255,0.24); }
+    .pc-arrow-prev { left: 1rem; }
+    .pc-arrow-next { right: 1rem; }
+    /* Dots */
+    .pc-dots {
+      position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 0.45rem; z-index: 10;
+    }
+    .pc-dot {
+      width: 9px; height: 9px; border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      border: none; cursor: pointer; padding: 0;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .pc-dot.active { background: var(--gold); transform: scale(1.4); }
+    @media (max-width: 640px) {
+      .pc-arrow { width: 36px; height: 36px; }
+      .pc-sub { display: none; }
+    }
+
+    /* ── Trust strip ───────────────────────────────── */
+    .trust-strip {
+      background: var(--green);
+      border-top: 1px solid rgba(201,168,76,0.2);
+    }
+    .trust-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem 2.5rem;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(249,247,244,0.9);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    /* ── Pricing section ────────────────────────────── */
+    .units-section {
+      background: var(--green);
+      padding: 4.5rem 1.5rem;
+    }
+    .units-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+    .section-heading {
+      text-align: center;
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      color: var(--offwhite);
+      margin: 0 0 0.4rem;
+    }
+    .section-sub {
+      text-align: center;
+      color: rgba(249,247,244,0.65);
+      font-size: 0.9rem;
+      margin: 0 0 3rem;
+    }
+    .units-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+    }
+    .unit-card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.75rem 1.25rem 1.5rem;
+      border: 3px solid transparent;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .unit-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.18);
+    }
+    .unit-card.popular { border-color: var(--gold); }
+    .popular-badge {
+      position: absolute; top: 0; right: 0;
+      background: var(--gold); color: var(--green);
+      font-size: 0.62rem; font-weight: 800;
+      padding: 5px 12px;
+      border-radius: 0 13px 0 10px;
+      letter-spacing: 0.07em;
+    }
+    .card-letter {
+      width: 54px; height: 54px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem; font-weight: 900;
+      margin: 0 auto 0.6rem;
+    }
+    .card-label {
+      font-size: 0.75rem; font-weight: 700;
+      color: #aaa; text-transform: uppercase;
+      letter-spacing: 0.06em; margin-bottom: 0.85rem;
+    }
+    .card-dims-area {
+      display: flex; justify-content: center;
+      gap: 0.4rem; margin-bottom: 1.25rem; flex-wrap: wrap;
+    }
+    .card-dims-badge {
+      font-size: 0.82rem; font-weight: 700;
+      padding: 4px 10px; border-radius: 20px;
+      background: rgba(27,77,62,0.1); color: var(--green);
+    }
+    .card-area-badge {
+      font-size: 0.82rem; font-weight: 700;
+      padding: 4px 10px; border-radius: 20px;
+      background: rgba(201,168,76,0.15); color: #8a6a1a;
+    }
+    .card-regular-price {
+      font-size: 0.88rem; color: #ccc;
+      text-decoration: line-through; margin-bottom: 0.15rem;
+    }
+    .card-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem; font-weight: 900;
+      color: var(--green); line-height: 1;
+    }
+    .card-mo { color: #999; font-size: 0.8rem; margin-bottom: 0.4rem; }
+    .card-promo-label {
+      display: inline-block;
+      background: #e8f5e9; color: #2e7d32;
+      font-size: 0.65rem; font-weight: 800;
+      padding: 3px 9px; border-radius: 20px;
+      margin-bottom: 1rem; letter-spacing: 0.05em;
+    }
+    .card-desc { color: #666; font-size: 0.82rem; margin-bottom: 1.25rem; min-height: 2.2rem; line-height: 1.5; }
+    .card-cta {
+      display: block; text-align: center;
+      padding: 0.7rem 0; border-radius: 10px;
+      text-decoration: none; font-weight: 800; font-size: 0.88rem;
+      transition: opacity 0.2s;
+    }
+    .card-cta:hover { opacity: 0.85; }
+
+    /* ── About section ─────────────────────────────── */
+    .about-section {
+      background: var(--offwhite);
+      padding: 4rem 1.5rem;
+    }
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .about-card {
+      background: white;
+      border-radius: 14px;
+      padding: 1.75rem 1.5rem;
+      border: 1px solid rgba(27,77,62,0.1);
+      box-shadow: 0 2px 12px rgba(27,77,62,0.06);
+    }
+    .about-icon {
+      margin-bottom: 1rem;
+    }
+    .about-card h3 {
+      color: var(--green);
+      font-size: 1rem;
+      font-weight: 800;
+      margin: 0 0 0.5rem;
+    }
+    .about-card p {
+      color: #444;
+      font-size: 0.88rem;
+      line-height: 1.65;
+      margin: 0;
+    }
+    .about-section .section-heading { color: var(--green); }
+    .about-section .section-sub { color: #555; }
+
+    /* ── Location section ──────────────────────────── */
+    .location-section {
+      background: var(--green);
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+    .location-h2 {
+      color: var(--offwhite);
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      margin: 0 0 0.4rem;
+    }
+    .location-addr {
+      color: rgba(249,247,244,0.65);
+      font-size: 0.9rem;
+      margin: 0 0 0.2rem;
+    }
+    .location-hours {
+      color: rgba(249,247,244,0.45);
+      font-size: 0.8rem;
+      margin: 0 0 2.25rem;
+    }
+    .location-btns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.85rem;
+    }
+    .loc-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.8rem 1.6rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.9rem;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .loc-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* ── Contact section ──────────────────────────── */
+    .contact-section {
+      background: var(--offwhite);
+      padding: 4.5rem 1.5rem;
+      text-align: center;
+    }
+    .contact-inner { max-width: 600px; margin: 0 auto; }
+    .contact-section .section-heading { color: var(--green); }
+    .contact-section .section-sub { color: #555; }
+    .contact-btns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    .contact-btn-wa, .contact-btn-call {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1.05rem;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .contact-btn-wa { background: #25D366; color: white; }
+    .contact-btn-call { background: var(--green); color: var(--offwhite); }
+    .contact-btn-wa:hover, .contact-btn-call:hover { opacity: 0.88; transform: translateY(-2px); }
+    .contact-note { margin-top: 1.75rem; color: #888; font-size: 0.85rem; }
+
+    /* ── Footer ────────────────────────────────────── */
+    footer {
+      background: var(--green-dk);
+      padding: 2.25rem 1rem;
+      text-align: center;
+    }
+    .footer-logo {
+      height: 32px;
+      width: auto;
+      display: block;
+      margin: 0 auto 0.9rem;
+      filter: brightness(0) invert(1);
+      opacity: 0.75;
+    }
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+    .footer-line {
+      color: rgba(249,247,244,0.55);
+      font-size: 0.82rem;
+      margin: 0 0 0.2rem;
+    }
+    .footer-line a { color: var(--gold); text-decoration: none; }
+    .footer-hours {
+      color: rgba(249,247,244,0.35);
+      font-size: 0.75rem;
+      margin-top: 1.2rem;
+    }
+
+    /* ── WhatsApp float ────────────────────────────── */
+    .wa-float {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      width: 58px;
+      height: 58px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 18px rgba(37,211,102,0.45);
+      z-index: 999;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .wa-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.55);
+    }
+
+    /* ── Responsive tweaks ─────────────────────────── */
+    @media (max-width: 640px) {
+      .nav-phone { display: none; }
+      .units-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 400px) {
+      .units-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ══════════════ LEAD GEN ══════════════ */
+
+    /* Overlay backdrop */
+    .lg-overlay {
+      position: fixed; inset: 0;
+      background: rgba(15,45,35,0.78);
+      z-index: 1000;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.28s;
+    }
+    .lg-overlay.open { opacity: 1; pointer-events: auto; }
+
+    /* Modal box */
+    .lg-box {
+      background: white;
+      border-radius: 16px;
+      max-width: 420px; width: 100%;
+      padding: 2rem 1.75rem 1.75rem;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.38);
+      max-height: 92vh; overflow-y: auto;
+    }
+    @media (max-width: 380px) {
+      .lg-box { padding: 1.5rem 1.2rem 1.2rem; }
+    }
+
+    /* Close × */
+    .lg-close {
+      position: absolute; top: 0.8rem; right: 1rem;
+      background: none; border: none; cursor: pointer;
+      color: #ccc; font-size: 1.7rem; line-height: 1; padding: 0;
+      transition: color 0.15s;
+    }
+    .lg-close:hover { color: var(--green); }
+
+    /* Copy */
+    .lg-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.28rem; font-weight: 800;
+      color: var(--green); margin: 0 0 0.35rem; line-height: 1.25;
+    }
+    .lg-sub { color: #777; font-size: 0.85rem; margin: 0 0 1.2rem; line-height: 1.45; }
+
+    /* Inputs */
+    .lg-field {
+      width: 100%; padding: 0.7rem 0.9rem;
+      border: 1.5px solid #e0e0e0; border-radius: 8px;
+      font-family: 'Nunito', sans-serif; font-size: 0.9rem;
+      color: var(--green); margin-bottom: 0.6rem;
+      outline: none; transition: border-color 0.2s; display: block;
+      background: white;
+    }
+    .lg-field:focus { border-color: var(--gold); }
+    select.lg-field { cursor: pointer; }
+
+    /* Checkbox row */
+    .lg-check {
+      display: flex; align-items: flex-start; gap: 0.5rem;
+      margin-bottom: 1rem; font-size: 0.8rem; color: #555; cursor: pointer;
+    }
+    .lg-check input[type="checkbox"] {
+      margin-top: 2px; flex-shrink: 0; accent-color: var(--green);
+    }
+
+    /* Submit button */
+    .lg-btn {
+      width: 100%; padding: 0.85rem;
+      background: var(--gold); color: var(--green);
+      border: none; border-radius: 10px;
+      font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.95rem;
+      cursor: pointer; transition: opacity 0.2s;
+    }
+    .lg-btn:hover { opacity: 0.88; }
+    .lg-btn:disabled { opacity: 0.55; cursor: default; }
+
+    /* Note below button */
+    .lg-note { text-align: center; color: #aaa; font-size: 0.75rem; margin: 0.55rem 0 0; }
+    .lg-field-error { color: #e05252; font-size: 0.75rem; margin: -6px 0 6px 2px; min-height: 0; display: none; }
+    .lg-field-error.visible { display: block; }
+    .lg-field.invalid { border-color: #e05252; }
+
+    /* Thank-you state */
+    .lg-thanks { text-align: center; padding: 0.5rem 0; }
+    .lg-thanks-icon { font-size: 2.5rem; margin-bottom: 0.4rem; }
+    .lg-thanks h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--green); margin: 0 0 0.45rem;
+    }
+    .lg-thanks p { color: #666; font-size: 0.88rem; margin: 0; line-height: 1.5; }
+
+    /* ── Sticky Mobile Bar ─────────────────── */
+    .sticky-bar {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--green-dk);
+      border-top: 2px solid var(--gold);
+      z-index: 990;
+    }
+    @media (max-width: 639px) {
+      body { padding-bottom: 58px; }
+      .sticky-bar { display: flex; }
+      .sticky-bar.hidden { display: none !important; }
+      .wa-float { display: none; }
+    }
+    .sb-btn {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 0.55rem 0.2rem;
+      border: none; background: none; cursor: pointer;
+      border-right: 1px solid rgba(201,168,76,0.18);
+      font-family: 'Nunito', sans-serif; text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .sb-btn:last-child { border-right: none; }
+    .sb-val { color: var(--gold); font-weight: 800; font-size: 0.78rem; line-height: 1.2; }
+    .sb-lbl {
+      color: rgba(249,247,244,0.7); font-size: 0.58rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em; margin-top: 1px;
+    }
+
+    /* ── Unit Card Alert Form ──────────────── */
+    .alert-toggle {
+      display: block; width: 100%; text-align: center;
+      margin-top: 0.6rem; font-size: 0.78rem;
+      color: var(--green-lg); font-weight: 700;
+      background: none; border: none; cursor: pointer;
+      text-decoration: underline; text-underline-offset: 3px;
+      font-family: 'Nunito', sans-serif; transition: color 0.15s;
+    }
+    .alert-toggle:hover { color: var(--green); }
+    .alert-form {
+      display: none; margin-top: 0.65rem;
+      background: var(--offwhite); border-radius: 8px;
+      padding: 0.85rem 0.75rem 0.75rem;
+      border: 1px solid rgba(27,77,62,0.12);
+    }
+    .alert-form.open { display: block; }
+    .alert-form .lg-field {
+      margin-bottom: 0.45rem; font-size: 0.82rem; padding: 0.6rem 0.75rem;
+    }
+    .alert-form .lg-check { font-size: 0.75rem; margin-bottom: 0.75rem; }
+    .alert-form .lg-btn { font-size: 0.82rem; padding: 0.6rem; }
+    .alert-thanks {
+      display: none; text-align: center; padding: 0.5rem 0;
+      color: var(--green); font-weight: 800; font-size: 0.82rem;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+<nav class="nav-wrap" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+
+    <a href="/" class="nav-logo" aria-label="AA Self Storage MiniBodegas home">
+      <img src="/images/logo.png" alt="AA Self Storage MiniBodegas"
+           style="height:48px;width:auto;object-fit:contain;display:block;" />
+    </a>
+
+    <nav class="nav-links" aria-label="Page sections">
+      <a href="#about" class="nav-link">
+        <span class="en-text">Why Choose Us</span>
+        <span class="es-text">Por Qué Elegirnos</span>
+      </a>
+      <a href="#units" class="nav-link">
+        <span class="en-text">Pricing</span>
+        <span class="es-text">Precios</span>
+      </a>
+      <a href="#location" class="nav-link">
+        <span class="en-text">Location</span>
+        <span class="es-text">Ubicación</span>
+      </a>
+      <a href="#contact" class="nav-link">
+        <span class="en-text">Contact</span>
+        <span class="es-text">Contacto</span>
+      </a>
+    </nav>
+
+    <div style="display:flex;align-items:center;gap:1.25rem;">
+      <a href="tel:+50640000854" class="nav-phone" aria-label="Call us">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+        </svg>
+        4000-0854
+      </a>
+
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button id="btn-en" class="lang-btn active" onclick="setLang('en')" aria-label="English">🇺🇸 EN</button>
+        <button id="btn-es" class="lang-btn"        onclick="setLang('es')" aria-label="Español">🇨🇷 ES</button>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════ HERO ══════════════════════════ -->
+<section class="hero" id="photo-carousel" aria-label="AA Self Storage MiniBodegas">
+
+  <!-- Slide 0: Expat couple — 6s -->
+  <div class="pc-slide active" data-slide="0">
+    <img src="/images/hero-couple.png" class="hero-photo" loading="eager" fetchpriority="high"
+         alt="Expat couple moving to Costa Rica with AA Self Storage"/>
+    <div class="pc-overlay"></div>
+  </div>
+  <!-- Slide 1: Entrance — 3s -->
+  <div class="pc-slide" data-slide="1" data-blur="true">
+    <div class="pc-bg" data-bg="/images/units/slide-1.jpg"></div>
+    <div class="pc-overlay"></div>
+  </div>
+  <!-- Slide 2: Building — 3s -->
+  <div class="pc-slide" data-slide="2" data-blur="true">
+    <div class="pc-bg" data-bg="/images/units/slide-2.jpg"></div>
+    <div class="pc-overlay"></div>
+  </div>
+  <!-- Slide 3: Exterior — 3s -->
+  <div class="pc-slide" data-slide="3" data-blur="true">
+    <div class="pc-bg" data-bg="/images/units/slide-3.jpg"></div>
+    <div class="pc-overlay"></div>
+  </div>
+  <!-- Slide 4: Units — 3s -->
+  <div class="pc-slide" data-slide="4" data-blur="true">
+    <div class="pc-bg" data-bg="/images/units/slide-4.jpg"></div>
+    <div class="pc-overlay"></div>
+  </div>
+  <!-- Slide 5: Inside — 3s -->
+  <div class="pc-slide" data-slide="5" data-blur="true">
+    <div class="pc-bg" data-bg="/images/units/slide-5.jpg"></div>
+    <div class="pc-overlay"></div>
+  </div>
+
+  <!-- Arrows -->
+  <button class="pc-arrow pc-arrow-prev" id="pc-prev" aria-label="Previous slide">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button class="pc-arrow pc-arrow-next" id="pc-next" aria-label="Next slide">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+
+  <!-- Dots -->
+  <div class="pc-dots" role="tablist" aria-label="Slide navigation">
+    <button class="pc-dot active" data-slide="0" role="tab" aria-label="Slide 1"></button>
+    <button class="pc-dot" data-slide="1" role="tab" aria-label="Slide 2"></button>
+    <button class="pc-dot" data-slide="2" role="tab" aria-label="Slide 3"></button>
+    <button class="pc-dot" data-slide="3" role="tab" aria-label="Slide 4"></button>
+    <button class="pc-dot" data-slide="4" role="tab" aria-label="Slide 5"></button>
+    <button class="pc-dot" data-slide="5" role="tab" aria-label="Slide 6"></button>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-card">
+      <h1>
+        <span class="en-text">
+          <em class="hero-finally">Finally.</em>
+          A Safe Place For Everything You Love.
+        </span>
+        <span class="es-text">
+          <em class="hero-finally">Por fin.</em>
+          Un Lugar Seguro Para Todo Lo Que Amas.
+        </span>
+      </h1>
+      <p class="hero-sub">
+        <span class="en-text">Secure self-storage in San José, Costa Rica. English-speaking staff. From $50/month. No contract.</span>
+        <span class="es-text">Almacenaje seguro en San José, Costa Rica. Personal bilingüe. Desde $50/mes. Sin contrato.</span>
+      </p>
+      <div class="hero-cta-row">
+        <a href="https://wa.me/50684227985?text=Hello%2C%20I%27d%20like%20info%20about%20storage%20units"
+           target="_blank" rel="noopener"
+           class="hero-btn-wa" aria-label="Chat on WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          <span class="en-text">WhatsApp Us</span>
+          <span class="es-text">Escríbenos</span>
+        </a>
+        <button class="hero-btn-guide" id="hero-guide-btn" aria-label="Get Free Guide">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <path d="M12 5v14M5 12l7 7 7-7"/>
+          </svg>
+          <span class="en-text">Free Moving Guide</span>
+          <span class="es-text">Guía Gratis</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════ PRICING ═══════════════════════ -->
+<section class="units-section" id="units">
+  <div class="units-inner">
+  <h2 class="section-heading">
+    <span class="en-text">Storage Units &amp; Pricing</span>
+    <span class="es-text">Bodegas y Precios</span>
+  </h2>
+  <p class="section-sub">
+    <span class="en-text">All prices in USD · Month-to-month · No long-term contract</span>
+    <span class="es-text">Precios en USD · Mes a mes · Sin contrato a largo plazo</span>
+  </p>
+
+  <div class="units-grid">
+    {units.map((u) => {
+      const waMsg = encodeURIComponent(`Hello! I'm interested in Unit Type ${u.type} (${u.dims} = ${u.area}) at $${u.price}/mo. Is it available?`);
+      const waMsgEs = encodeURIComponent(`¡Hola! Me interesa la Unidad Tipo ${u.type} (${u.dims} = ${u.area}) a $${u.price}/mes. ¿Está disponible?`);
+      return (
+        <div class={`unit-card${u.popular ? ' popular' : ''}`}>
+          {u.popular && (
+            <div class="popular-badge">
+              <span class="en-text">POPULAR</span>
+              <span class="es-text">POPULAR</span>
+            </div>
+          )}
+          <div class="card-letter" style={u.popular ? 'background:var(--gold);color:var(--green)' : 'background:var(--green);color:var(--gold)'}>
+            {u.type}
+          </div>
+          <div class="card-label">
+            <span class="en-text">{u.labelEn}</span>
+            <span class="es-text">{u.labelEs}</span>
+          </div>
+          <div class="card-dims-area">
+            <span class="card-dims-badge">{u.dims}</span>
+            <span class="card-area-badge">{u.area}</span>
+          </div>
+          <div class="card-regular-price">${u.regularPrice}/mo</div>
+          <div class="card-price">${u.price}</div>
+          <div class="card-mo">
+            <span class="en-text">/month</span>
+            <span class="es-text">/mes</span>
+          </div>
+          <div class="card-promo-label">
+            <span class="en-text">PROMO PRICE</span>
+            <span class="es-text">PRECIO PROMOCIÓN</span>
+          </div>
+          <div class="card-desc">
+            <span class="en-text">{u.descEn}</span>
+            <span class="es-text">{u.descEs}</span>
+          </div>
+          <a href={`https://wa.me/50684227985?text=${waMsg}`}
+             target="_blank" rel="noopener"
+             class="card-cta en-text"
+             style={u.popular ? 'background:var(--gold);color:var(--green)' : 'background:var(--green);color:var(--offwhite)'}>
+            Ask on WhatsApp
+          </a>
+          <a href={`https://wa.me/50684227985?text=${waMsgEs}`}
+             target="_blank" rel="noopener"
+             class="card-cta es-text"
+             style={u.popular ? 'background:var(--gold);color:var(--green)' : 'background:var(--green);color:var(--offwhite)'}>
+            Preguntar por WhatsApp
+          </a>
+
+          {/* Alert me when available */}
+          <button class="alert-toggle">
+            <span class="en-text">🔔 Alert me when available</span>
+            <span class="es-text">🔔 Avísame cuando esté disponible</span>
+          </button>
+          <div class="alert-form">
+            <form class="alert-unit-form">
+              <input type="hidden" name="form_type" value="unit_alert" />
+              <input type="hidden" name="unit_type" value={u.type} />
+              <input type="hidden" name="unit_price" value={`$${u.price}/mo`} />
+              <input class="lg-field" type="tel" name="whatsapp"
+                autocomplete="tel"
+                placeholder="WhatsApp" required />
+              <select class="lg-field" name="unit_preference" required>
+                <option value="">Size / Tamaño: A B C D E</option>
+                <option value="A">A — 1.5×1.5 m · $50/mo</option>
+                <option value="B">B — 2×2 m · $80/mo</option>
+                <option value="C">C — 4×2.25 m · $200/mo</option>
+                <option value="D">D — 4×4.5 m · $180/mo</option>
+                <option value="E">E — 6×6 m · $360/mo</option>
+              </select>
+              <label class="lg-check">
+                <input type="checkbox" name="consent" required />
+                <span>
+                  <span class="en-text">I agree to receive storage updates. No spam.</span>
+                  <span class="es-text">Acepto recibir actualizaciones de almacenaje.</span>
+                </span>
+              </label>
+              <button type="submit" class="lg-btn">
+                <span class="en-text">Notify Me</span>
+                <span class="es-text">Notifícame</span>
+              </button>
+            </form>
+            <div class="alert-thanks">
+              <span class="en-text">✅ We'll notify you when it's available!</span>
+              <span class="es-text">✅ ¡Te avisaremos cuando esté disponible!</span>
+            </div>
+          </div>
+
+        </div>
+      );
+    })}
+  </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════ TRUST STRIP ══════════════════════ -->
+<section class="trust-strip" aria-label="Why choose us">
+  <div class="trust-inner">
+
+    <div class="trust-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <circle cx="12" cy="11" r="2" fill="#C9A84C" stroke="none"/>
+      </svg>
+      <span class="en-text">CCTV Security</span>
+      <span class="es-text">Seguridad CCTV</span>
+    </div>
+
+    <div class="trust-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+      </svg>
+      <span class="en-text">English-Speaking Staff</span>
+      <span class="es-text">Personal Bilingüe</span>
+    </div>
+
+    <div class="trust-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+      <span class="en-text">Month-to-Month</span>
+      <span class="es-text">Mes a Mes</span>
+    </div>
+
+    <div class="trust-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M12 6v6l4 2" stroke="#C9A84C" stroke-width="2"/>
+      </svg>
+      <span class="en-text">Prices in USD</span>
+      <span class="es-text">Precios en USD</span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════ LOCATION ════════════════════════ -->
+<section class="location-section" id="location">
+  <h2 class="location-h2">
+    <span class="en-text">Find Us in La Uruca</span>
+    <span class="es-text">Encuéntranos en La Uruca</span>
+  </h2>
+  <p class="location-addr">
+    <span class="en-text">Next to Migración y Extranjería · Road to Juan Santamaría Airport, San José</span>
+    <span class="es-text">Al lado de Migración y Extranjería · Camino al aeropuerto Juan Santamaría, San José</span>
+  </p>
+  <p class="location-addr" style="margin-top:0.6rem;font-size:0.85rem;opacity:0.75;">
+    <span class="en-text">La Uruca is the transport hub of Costa Rica — direct connection to Ruta 27 (Pacific/Caldera), Ruta 32 (Atlantic/Limón), Autopista General Cañas (Airport/Alajuela), and Interamericana Norte. Easy access from anywhere in the country.</span>
+    <span class="es-text">La Uruca es el corazón del transporte de Costa Rica — conexión directa a Ruta 27 (Pacífico/Caldera), Ruta 32 (Atlántico/Limón), Autopista General Cañas (Aeropuerto/Alajuela) y la Interamericana Norte. Acceso fácil desde cualquier punto del país.</span>
+  </p>
+  <p class="location-hours">
+    <span class="en-text">Mon – Fri &nbsp;8:00am – 5:00pm &nbsp;·&nbsp; Saturday &amp; Sunday closed</span>
+    <span class="es-text">Lun – Vie &nbsp;8:00am – 5:00pm &nbsp;·&nbsp; Sábado y domingo cerrado</span>
+  </p>
+
+  <div class="location-btns">
+
+    <a href="https://maps.google.com/?q=AA+Self+Storage+La+Uruca+San+Jose"
+       target="_blank" rel="noopener"
+       class="loc-btn"
+       style="background:#4285F4;color:white;"
+       aria-label="Open in Google Maps">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+      </svg>
+      Google Maps
+    </a>
+
+    <a href="https://waze.com/ul?q=AA+Self+Storage+La+Uruca&navigate=yes"
+       target="_blank" rel="noopener"
+       class="loc-btn"
+       style="background:#33CCFF;color:#1a1a1a;"
+       aria-label="Open in Waze">
+      <svg width="18" height="18" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <circle cx="50" cy="50" r="48" fill="#33CCFF"/>
+        <ellipse cx="50" cy="45" rx="28" ry="26" fill="white"/>
+        <circle cx="40" cy="40" r="5" fill="#1a1a1a"/>
+        <circle cx="60" cy="40" r="5" fill="#1a1a1a"/>
+        <path d="M37 56 Q50 66 63 56" stroke="#1a1a1a" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <circle cx="35" cy="72" r="7" fill="#1a1a1a"/>
+        <circle cx="65" cy="72" r="7" fill="#1a1a1a"/>
+      </svg>
+      Waze
+    </a>
+
+    <a href="tel:+50640000854"
+       class="loc-btn"
+       style="background:var(--gold);color:var(--green);"
+       aria-label="Call 4000-0854">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+      </svg>
+      4000-0854
+    </a>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════ ABOUT US ═════════════════════════ -->
+<section class="about-section" id="about" aria-label="About AA Self Storage MiniBodegas">
+  <div class="about-inner">
+    <h2 class="section-heading">
+      <span class="en-text">Why Choose Us</span>
+      <span class="es-text">Por Qué Elegirnos</span>
+    </h2>
+    <p class="section-sub">
+      <span class="en-text">Real reasons — nothing invented, nothing exaggerated.</span>
+      <span class="es-text">Razones reales — nada inventado, nada exagerado.</span>
+    </p>
+    <div class="about-grid">
+
+      <!-- CCTV -->
+      <div class="about-card">
+        <div class="about-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/>
+          </svg>
+        </div>
+        <h3 class="en-text">Facility CCTV</h3>
+        <h3 class="es-text">Circuito Cerrado en Instalaciones</h3>
+        <p class="en-text">One camera at the entrance gate plus several covering the full perimeter of the storage units. Our security covers our facility — not the neighborhood.</p>
+        <p class="es-text">Una cámara en el portón de entrada más varias cubriendo todo el perímetro de las bodegas. La seguridad que ofrecemos es de nuestras instalaciones.</p>
+      </div>
+
+      <!-- Location hub -->
+      <div class="about-card">
+        <div class="about-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </div>
+        <h3 class="en-text">Heart of Costa Rica's Transport</h3>
+        <h3 class="es-text">Corazón del Transporte de Costa Rica</h3>
+        <p class="en-text">La Uruca connects directly to Ruta 27 (Pacific/Caldera), Ruta 32 (Atlantic/Limón), Autopista General Cañas (Airport/Alajuela), and Interamericana Norte. Easy access from anywhere in the country.</p>
+        <p class="es-text">La Uruca conecta directamente con la Ruta 27 (Pacífico/Caldera), Ruta 32 (Atlántico/Limón), Autopista General Cañas (Aeropuerto/Alajuela) y la Interamericana Norte. Acceso fácil desde cualquier punto del país.</p>
+      </div>
+
+      <!-- Near everything -->
+      <div class="about-card">
+        <div class="about-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <h3 class="en-text">Next to Migración y Extranjería</h3>
+        <h3 class="es-text">Al Lado de Migración y Extranjería</h3>
+        <p class="en-text">Right next to Costa Rica's main immigration office — the landmark every expat already knows. Minutes from Juan Santamaría Airport.</p>
+        <p class="es-text">Al lado de la oficina principal de inmigración de Costa Rica — el punto de referencia que todo expat ya conoce. A minutos del aeropuerto Juan Santamaría.</p>
+      </div>
+
+      <!-- Staff + no contract -->
+      <div class="about-card">
+        <div class="about-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3 class="en-text">English-Speaking · No Long Contract</h3>
+        <h3 class="es-text">Personal Bilingüe · Sin Contrato Largo</h3>
+        <p class="en-text">Our staff speaks English and Spanish. And you're never locked in — month-to-month, cancel anytime.</p>
+        <p class="es-text">Nuestro personal habla inglés y español. Y nunca queda atado — mes a mes, cancele cuando quiera.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════ CONTACT ════════════════════════ -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <h2 class="section-heading">
+      <span class="en-text">Ready to Reserve Your Unit?</span>
+      <span class="es-text">¿Listo para Reservar tu Bodega?</span>
+    </h2>
+    <p class="section-sub">
+      <span class="en-text">Write to us on WhatsApp or give us a call. We speak English.</span>
+      <span class="es-text">Escríbenos por WhatsApp o llámanos. Atendemos en español e inglés.</span>
+    </p>
+    <div class="contact-btns">
+      <a href="https://wa.me/50684227985" target="_blank" rel="noopener"
+         class="contact-btn-wa" aria-label="WhatsApp 8422-7985">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        WhatsApp 8422-7985
+      </a>
+      <a href="tel:+50640000854" class="contact-btn-call" aria-label="Call 4000-0854">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+        </svg>
+        4000-0854
+      </a>
+    </div>
+    <p class="contact-note">
+      <span class="en-text">Mon – Fri &nbsp;8:00am – 5:00pm &nbsp;·&nbsp; Weekends closed</span>
+      <span class="es-text">Lun – Vie &nbsp;8:00am – 5:00pm &nbsp;·&nbsp; Fines de semana cerrado</span>
+    </p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════ FOOTER ════════════════════════ -->
+<footer>
+  <img src="/images/logo.png" alt="AA Self Storage MiniBodegas" class="footer-logo" />
+  <div class="footer-brand">AA Self Storage MiniBodegas</div>
+  <p class="footer-line">
+    <span class="en-text">La Uruca, San José, Costa Rica · Next to Migración y Extranjería</span>
+    <span class="es-text">La Uruca, San José, Costa Rica · Al lado de Migración y Extranjería</span>
+  </p>
+  <p class="footer-line">
+    <a href="tel:+50640000854">4000-0854</a>
+    &nbsp;·&nbsp;
+    <a href="https://wa.me/50684227985">WhatsApp 8422-7985</a>
+  </p>
+  <p class="footer-hours">
+    <span class="en-text">Mon – Fri &nbsp;8:00am – 5:00pm &nbsp;·&nbsp; Weekends closed</span>
+    <span class="es-text">Lun – Vie &nbsp;8:00am – 5:00pm &nbsp;·&nbsp; Fines de semana cerrado</span>
+  </p>
+</footer>
+
+
+<!-- ═══════════════════ WHATSAPP FLOAT ═══════════════════════ -->
+<a href="https://wa.me/50684227985?text=Hello%2C%20I%27d%20like%20info%20about%20storage%20units"
+   target="_blank"
+   rel="noopener"
+   class="wa-float"
+   aria-label="Chat on WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+
+<!-- ══════════════ FREE GUIDE POPUP ══════════════ -->
+<div id="lead-popup" class="lg-overlay" role="dialog" aria-modal="true" aria-label="Free Guide Download">
+  <div class="lg-box">
+    <button class="lg-close" id="lp-close" aria-label="Close">×</button>
+
+    <div id="lp-form-wrap">
+      <p class="lg-title en-text">Free Download: The Expat's Guide to Moving to Costa Rica</p>
+      <p class="lg-title es-text">Descarga Gratis: La Guía del Expat para Mudarse a Costa Rica</p>
+      <p class="lg-sub en-text">What to bring · What to store · What to leave behind</p>
+      <p class="lg-sub es-text">Qué traer · Qué almacenar · Qué dejar atrás</p>
+
+      <form id="lp-form" novalidate>
+        <input type="hidden" name="form_type" value="free_guide" />
+
+        <input class="lg-field" type="text" name="first_name"
+          autocomplete="given-name"
+          placeholder="First Name / Nombre" />
+        <p class="lg-field-error" id="err-first_name"></p>
+
+        <input class="lg-field" type="text" name="last_name_1"
+          autocomplete="family-name"
+          placeholder="First Last Name / Primer Apellido" />
+        <p class="lg-field-error" id="err-last_name_1"></p>
+
+        <input class="lg-field" type="text" name="last_name_2"
+          autocomplete="additional-name"
+          placeholder="Second Last Name / Segundo Apellido" />
+        <p class="lg-field-error" id="err-last_name_2"></p>
+
+        <input class="lg-field" type="email" name="email"
+          autocomplete="email"
+          placeholder="Email address / Correo electrónico" />
+        <p class="lg-field-error" id="err-email"></p>
+
+        <input class="lg-field" type="tel" name="whatsapp"
+          autocomplete="tel"
+          placeholder="WhatsApp (optional / opcional)" />
+        <label class="lg-check">
+          <input type="checkbox" name="consent" />
+          <span>
+            <span class="en-text">I agree to receive storage tips and deals. No spam ever.</span>
+            <span class="es-text">Acepto recibir consejos y ofertas de almacenaje. Sin spam.</span>
+          </span>
+        </label>
+        <p class="lg-field-error" id="err-consent"></p>
+        <button type="submit" class="lg-btn">
+          <span class="en-text">Send Me the Free Guide</span>
+          <span class="es-text">Envíame la Guía Gratuita</span>
+        </button>
+        <p class="lg-note">
+          <span class="en-text">Your guide downloads instantly — we'll also send it to your email</span>
+          <span class="es-text">La guía se descarga al instante — también te la enviamos por correo</span>
+        </p>
+      </form>
+    </div>
+
+    <div id="lp-thanks" class="lg-thanks" style="display:none">
+      <div class="lg-thanks-icon">✅</div>
+      <h3 class="en-text">Your guide is ready!</h3>
+      <h3 class="es-text">¡Tu guía está lista!</h3>
+      <a href="/expat-guide.pdf" download="Expat-Guide-Costa-Rica-AA-Self-Storage.pdf" class="lg-btn" style="display:inline-flex;align-items:center;gap:0.5rem;margin:1rem 0;text-decoration:none;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        <span class="en-text">Download: The Expat's Guide to Costa Rica</span>
+        <span class="es-text">Descargar: La Guía del Expat en Costa Rica</span>
+      </a>
+      <p class="en-text" style="margin-top:0.5rem;font-size:0.85rem;opacity:0.8;">A copy is also on its way to your email. We'll WhatsApp you within 2 hours.</p>
+      <p class="es-text" style="margin-top:0.5rem;font-size:0.85rem;opacity:0.8;">También te enviamos una copia por correo. Te escribiremos por WhatsApp en 2 horas.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════ EXIT INTENT POPUP ══════════════ -->
+<div id="exit-popup" class="lg-overlay" role="dialog" aria-modal="true" aria-label="Discount offer">
+  <div class="lg-box">
+    <button class="lg-close" id="ep-close" aria-label="Close">×</button>
+
+    <div id="ep-form-wrap">
+      <p class="lg-title en-text">Wait — Don't miss your 25% discount</p>
+      <p class="lg-title es-text">Espera — No pierdas tu 25% de descuento</p>
+
+      <form id="ep-form">
+        <input type="hidden" name="form_type" value="exit_intent" />
+        <input class="lg-field" type="tel" name="whatsapp"
+          autocomplete="tel"
+          placeholder="WhatsApp number / Número de WhatsApp" required />
+        <label class="lg-check">
+          <input type="checkbox" name="consent" required />
+          <span>
+            <span class="en-text">I agree to receive storage tips and deals. No spam ever.</span>
+            <span class="es-text">Acepto recibir consejos y ofertas de almacenaje. Sin spam.</span>
+          </span>
+        </label>
+        <button type="submit" class="lg-btn">
+          <span class="en-text">Text Me the Discount Code</span>
+          <span class="es-text">Envíame el Código de Descuento</span>
+        </button>
+        <p class="lg-note">
+          <span class="en-text">We send one text. That's it.</span>
+          <span class="es-text">Solo un mensaje. Nada más.</span>
+        </p>
+      </form>
+    </div>
+
+    <div id="ep-thanks" class="lg-thanks" style="display:none">
+      <div class="lg-thanks-icon">✅</div>
+      <h3 class="en-text">Got it!</h3>
+      <h3 class="es-text">¡Recibido!</h3>
+      <p class="en-text">We'll send your discount code to your WhatsApp within 2 hours.</p>
+      <p class="es-text">Te enviaremos tu código de descuento por WhatsApp en 2 horas.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════ STICKY MOBILE BAR ══════════════ -->
+<div id="sticky-bar" class="sticky-bar" role="navigation" aria-label="Quick actions">
+
+  <a href="#units" class="sb-btn">
+    <span class="sb-val">$50/mo</span>
+    <span class="sb-lbl en-text">Units</span>
+    <span class="sb-lbl es-text">Unidades</span>
+  </a>
+
+  <a href="https://wa.me/50684227985?text=Hello%2C%20I%27d%20like%20info%20about%20storage%20units"
+     target="_blank" rel="noopener"
+     class="sb-btn"
+     aria-label="WhatsApp Us">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+    <span class="sb-lbl en-text">WhatsApp</span>
+    <span class="sb-lbl es-text">WhatsApp</span>
+  </a>
+
+  <button id="sb-guide-btn" class="sb-btn" aria-label="Get Free Guide">
+    <span class="sb-val en-text">Free Guide</span>
+    <span class="sb-val es-text">Guía Gratis</span>
+    <span class="sb-lbl en-text">Download</span>
+    <span class="sb-lbl es-text">Descargar</span>
+  </button>
+
+</div>
+
+
+<!-- ═════════════════════════ SCRIPTS ════════════════════════ -->
+<!-- GSAP via CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" is:inline></script>
+
+<script is:inline>
+  // ── Language toggle ─────────────────────────────────────────
+  function setLang(lang) {
+    const html = document.documentElement;
+    html.className = 'lang-' + lang;
+    html.lang = lang === 'es' ? 'es-CR' : 'en';
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+    try { localStorage.setItem('lang', lang); } catch(e){}
+  }
+
+  (function initLang() {
+    try {
+      const saved = localStorage.getItem('lang');
+      if (saved === 'es') setLang('es');
+      else setLang('en');
+    } catch(e) { setLang('en'); }
+  })();
+
+  // ── Photo Carousel ───────────────────────────────────────────
+  (function initPhotoCarousel() {
+    var slides  = document.querySelectorAll('.pc-slide');
+    var dots    = document.querySelectorAll('.pc-dot');
+    var current = 0;
+    var total   = slides.length;
+    var timer;
+
+    // Slide 0 (expats couple) 6s; unit photos 3s each
+    var TIMINGS = [6000, 3000, 3000, 3000, 3000, 3000];
+
+    function getLang() {
+      return document.documentElement.className === 'lang-es' ? 'es' : 'en';
+    }
+
+    function getBgUrl(bg) {
+      var lang = getLang();
+      return (lang === 'es' ? bg.dataset.bgEs : bg.dataset.bgEn) || bg.dataset.bg;
+    }
+
+    function loadBg(slide) {
+      var bg = slide.querySelector('.pc-bg');
+      if (!bg) return;
+      var url = getBgUrl(bg);
+      if (url && !bg.dataset.loaded) {
+        bg.style.backgroundImage = 'url(' + url + ')';
+        if (!bg.dataset.bgEn) bg.dataset.loaded = '1';
+      }
+    }
+
+    // Skip KB on solid/tagline slides (no .pc-bg or no background-image)
+    function restartKB(slide) {
+      var bg = slide.querySelector('.pc-bg');
+      if (!bg || !bg.style.backgroundImage) return;
+      bg.classList.remove('kb');
+      void bg.offsetWidth;
+      bg.classList.add('kb');
+    }
+
+    function goTo(next) {
+      if (next === current) return;
+      var out = slides[current];
+      var ins = slides[next];
+      loadBg(ins);
+      if (typeof gsap !== 'undefined') {
+        gsap.to(out, { opacity: 0, duration: 0.5, ease: 'power2.inOut',
+          onComplete: function() { out.classList.remove('active'); } });
+        gsap.fromTo(ins, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'power2.inOut',
+          onStart: function() { ins.classList.add('active'); restartKB(ins); } });
+      } else {
+        out.classList.remove('active');
+        ins.classList.add('active');
+        restartKB(ins);
+      }
+      dots[current].classList.remove('active');
+      dots[next].classList.add('active');
+      current = next;
+    }
+
+    function nextSlide() { goTo((current + 1) % total); }
+    function prevSlide() { goTo((current - 1 + total) % total); }
+
+    // Variable per-slide timer using setTimeout
+    function scheduleNext() {
+      clearTimeout(timer);
+      var delay = TIMINGS[current] !== undefined ? TIMINGS[current] : 3000;
+      timer = setTimeout(function() {
+        nextSlide();
+        scheduleNext();
+      }, delay);
+    }
+
+    loadBg(slides[0]);
+    restartKB(slides[0]);
+
+    var btnNext = document.getElementById('pc-next');
+    var btnPrev = document.getElementById('pc-prev');
+    if (btnNext) btnNext.addEventListener('click', function() { nextSlide(); scheduleNext(); });
+    if (btnPrev) btnPrev.addEventListener('click', function() { prevSlide(); scheduleNext(); });
+
+    dots.forEach(function(dot, i) {
+      dot.addEventListener('click', function() { goTo(i); scheduleNext(); });
+    });
+
+    var track = document.getElementById('photo-carousel');
+    if (track) {
+      var tx = 0;
+      track.addEventListener('touchstart', function(e) { tx = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener('touchend', function(e) {
+        var dx = e.changedTouches[0].clientX - tx;
+        if (Math.abs(dx) > 50) {
+          if (dx < 0) nextSlide(); else prevSlide();
+          scheduleNext();
+        }
+      }, { passive: true });
+    }
+
+    // Language switch: reload lang-aware bg (slide 0 only)
+    document.addEventListener('click', function(e) {
+      if (e.target.id !== 'btn-en' && e.target.id !== 'btn-es') return;
+      setTimeout(function() {
+        slides.forEach(function(slide) {
+          var bg = slide.querySelector('.pc-bg');
+          if (!bg || !bg.dataset.bgEn) return;
+          var url = getBgUrl(bg);
+          if (url) bg.style.backgroundImage = 'url(' + url + ')';
+        });
+      }, 50);
+    });
+
+    scheduleNext();
+  })();
+</script>
+
+
+<script is:inline>
+(function initLeadGen() {
+  var FORMSPREE = 'https://formspree.io/f/xkopejwp';
+
+  /* ── Helpers ─────────────────────────────────── */
+  function openOverlay(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    var bar = document.getElementById('sticky-bar');
+    if (bar) bar.classList.add('hidden');
+  }
+
+  function closeOverlay(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.classList.remove('open');
+    document.body.style.overflow = '';
+    // Re-show sticky bar only if no other popup is open
+    if (!document.querySelector('.lg-overlay.open')) {
+      var bar = document.getElementById('sticky-bar');
+      if (bar) bar.classList.remove('hidden');
+    }
+  }
+
+  function postForm(form, callback) {
+    var btn = form.querySelector('.lg-btn');
+    if (btn) btn.disabled = true;
+    var data = new FormData(form);
+    fetch(FORMSPREE, {
+      method: 'POST',
+      body: data,
+      headers: { Accept: 'application/json' }
+    })
+    .then(function(r) { callback(r.ok); })
+    .catch(function() { callback(false); })
+    .finally(function() { if (btn) btn.disabled = false; });
+  }
+
+  function showThanks(wrapId, thanksId) {
+    var w = document.getElementById(wrapId);
+    var t = document.getElementById(thanksId);
+    if (w) w.style.display = 'none';
+    if (t) t.style.display = 'block';
+  }
+
+  /* ── Escape key ──────────────────────────────── */
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Escape') return;
+    if (document.getElementById('lead-popup').classList.contains('open')) closeLead();
+    if (document.getElementById('exit-popup').classList.contains('open')) closeOverlay('exit-popup');
+  });
+
+  /* ── Free Guide Popup ────────────────────────── */
+  var exitReady = false;
+
+  function closeLead() {
+    closeOverlay('lead-popup');
+    try { sessionStorage.setItem('aa_popup_seen', '1'); } catch(e) {}
+    exitReady = true;
+  }
+
+  var lpClose = document.getElementById('lp-close');
+  if (lpClose) lpClose.addEventListener('click', closeLead);
+
+  var leadPopup = document.getElementById('lead-popup');
+  if (leadPopup) {
+    leadPopup.addEventListener('click', function(e) {
+      if (e.target === leadPopup) closeLead();
+    });
+  }
+
+  /* ── Name validation helpers ─────────────────── */
+  var VOWELS = /[aeiouáéíóúü]/i;
+  var CONSONANTS = /[bcdfghjklmnñpqrstvwxyz]/i;
+  var LETTERS_ONLY = /^[a-záéíóúüñA-ZÁÉÍÓÚÜÑ\s\-']+$/;
+
+  function validateName(val) {
+    var v = val.trim();
+    if (!v) return 'Required / Requerido';
+    if (v.length < 2) return 'Too short / Muy corto';
+    if (!LETTERS_ONLY.test(v)) return 'Letters only / Solo letras';
+    if (/(.)\1\1/.test(v)) return 'Looks like gibberish / Parece inválido';
+    if (!VOWELS.test(v)) return 'Must contain a vowel / Debe tener una vocal';
+    if (!CONSONANTS.test(v)) return 'Looks like gibberish / Parece inválido';
+    return null;
+  }
+
+  function showFieldError(inputEl, errorEl, msg) {
+    if (msg) {
+      inputEl.classList.add('invalid');
+      errorEl.textContent = msg;
+      errorEl.classList.add('visible');
+      return false;
+    } else {
+      inputEl.classList.remove('invalid');
+      errorEl.textContent = '';
+      errorEl.classList.remove('visible');
+      return true;
+    }
+  }
+
+  function validateLeadForm(form) {
+    var ok = true;
+    var nameFields = ['first_name', 'last_name_1', 'last_name_2'];
+    nameFields.forEach(function(name) {
+      var input = form.querySelector('[name="' + name + '"]');
+      var errEl = document.getElementById('err-' + name);
+      if (!showFieldError(input, errEl, validateName(input.value))) ok = false;
+    });
+    var emailInput = form.querySelector('[name="email"]');
+    var emailErr = document.getElementById('err-email');
+    var emailVal = emailInput.value.trim().toLowerCase();
+    var emailMsg = null;
+    if (!emailVal) {
+      emailMsg = 'Required / Requerido';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(emailVal)) {
+      emailMsg = 'Invalid email / Correo inválido';
+    } else {
+      var emailLocal = emailVal.split('@')[0];
+      var emailDomain = emailVal.split('@')[1];
+      var fakeDomains = ['test.com','example.com','example.org','example.net',
+        'fake.com','dummy.com','mailinator.com','tempmail.com','throwaway.email',
+        'guerrillamail.com','yopmail.com','trashmail.com','sharklasers.com',
+        'maildrop.cc','dispostable.com','getairmail.com','spam4.me'];
+      var fakeLocals = ['test','fake','dummy','asdf','qwerty','admin','user',
+        'nobody','noreply','no-reply','donotreply','nothing','aaa','bbb','ccc',
+        'abc','xyz','123','1234'];
+      if (fakeDomains.indexOf(emailDomain) !== -1) {
+        emailMsg = 'Please use a real email / Use un correo real';
+      } else if (fakeLocals.indexOf(emailLocal) !== -1) {
+        emailMsg = 'Please use a real email / Use un correo real';
+      } else if (/^(.)\1+$/.test(emailLocal)) {
+        emailMsg = 'Please use a real email / Use un correo real';
+      }
+    }
+    if (!showFieldError(emailInput, emailErr, emailMsg)) ok = false;
+    var consent = form.querySelector('[name="consent"]');
+    var consentErr = document.getElementById('err-consent');
+    if (!consent.checked) {
+      consentErr.textContent = 'Please agree to continue / Por favor acepta para continuar';
+      consentErr.classList.add('visible');
+      ok = false;
+    } else {
+      consentErr.textContent = '';
+      consentErr.classList.remove('visible');
+    }
+    return ok;
+  }
+
+  var lpForm = document.getElementById('lp-form');
+  if (lpForm) {
+    lpForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!validateLeadForm(lpForm)) return;
+      var btn = lpForm.querySelector('.lg-btn');
+      if (btn) btn.disabled = true;
+      fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          first_name:  lpForm.querySelector('[name="first_name"]').value.trim(),
+          last_name_1: lpForm.querySelector('[name="last_name_1"]').value.trim(),
+          last_name_2: lpForm.querySelector('[name="last_name_2"]').value.trim(),
+          email:       lpForm.querySelector('[name="email"]').value.trim()
+        })
+      })
+      .finally(function() {
+        if (btn) btn.disabled = false;
+        // Always show success — download button is fallback if email fails
+        showThanks('lp-form-wrap', 'lp-thanks');
+      });
+    });
+  }
+
+  // Trigger after 25 seconds (allow carousel to cycle first)
+  try {
+    if (!sessionStorage.getItem('aa_popup_seen')) {
+      setTimeout(function() { openOverlay('lead-popup'); }, 25000);
+    } else {
+      exitReady = true;
+    }
+  } catch(e) {
+    setTimeout(function() { openOverlay('lead-popup'); }, 25000);
+  }
+
+  /* ── Exit Intent Popup ───────────────────────── */
+  var exitFired = false;
+
+  document.addEventListener('mouseleave', function(e) {
+    if (e.clientY >= 20) return;
+    if (!exitReady || exitFired) return;
+    exitFired = true;
+    openOverlay('exit-popup');
+  });
+
+  var epClose = document.getElementById('ep-close');
+  if (epClose) epClose.addEventListener('click', function() { closeOverlay('exit-popup'); });
+
+  var exitPopup = document.getElementById('exit-popup');
+  if (exitPopup) {
+    exitPopup.addEventListener('click', function(e) {
+      if (e.target === exitPopup) closeOverlay('exit-popup');
+    });
+  }
+
+  var epForm = document.getElementById('ep-form');
+  if (epForm) {
+    epForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      postForm(epForm, function(ok) {
+        if (ok) showThanks('ep-form-wrap', 'ep-thanks');
+      });
+    });
+  }
+
+  /* ── Sticky Bar — Free Guide button ─────────── */
+  var sbGuide = document.getElementById('sb-guide-btn');
+  if (sbGuide) {
+    sbGuide.addEventListener('click', function() {
+      openOverlay('lead-popup');
+    });
+  }
+
+  /* ── Hero Free Guide button ──────────────────── */
+  var heroGuide = document.getElementById('hero-guide-btn');
+  if (heroGuide) {
+    heroGuide.addEventListener('click', function() {
+      openOverlay('lead-popup');
+    });
+  }
+
+  /* ── Unit Card Alert Forms ───────────────────── */
+  document.querySelectorAll('.alert-toggle').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var form = btn.nextElementSibling;
+      if (form) form.classList.toggle('open');
+    });
+  });
+
+  document.querySelectorAll('.alert-unit-form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      postForm(form, function(ok) {
+        if (!ok) return;
+        var wrap = form.closest('.alert-form');
+        if (!wrap) return;
+        form.style.display = 'none';
+        var thanks = wrap.querySelector('.alert-thanks');
+        if (thanks) thanks.style.display = 'block';
+      });
+    });
+  });
+
+})();
+</script>
+
+</body>
+</html>
